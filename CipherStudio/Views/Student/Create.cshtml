@@ -1,0 +1,69 @@
+﻿@model CipherStudio.Models.Student
+
+@{
+    ViewBag.Title = "Create Student";
+}
+
+<h2>Create Student</h2>
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+{
+    @Html.AntiForgeryToken()
+
+    <div class="row">
+        <h4>Student</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Age, new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.Age, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Age, "", new { @class = "text-danger" })
+        </div>
+
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.ImagePath,  new { @class = "control-label col-md-2" })
+                <input type="file" name="ImageFile" class="form-control" />
+                @Html.ValidationMessageFor(model => model.ImagePath, "", new { @class = "text-danger" })
+            </div>*@
+
+        <div class="form-group">
+            @Html.Label("Image", new { @class = "control-label col-md-2" })
+            <input type="file" name="image" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClassId, "Class", new { @class = "control-label col-md-2" })
+            @*@Html.DropDownListFor(m=>m.ClassId,new SelectList(ViewBag.ClassId, "Id", "Name"))*@
+            @Html.DropDownList("ClassId", null,htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.ClassId, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RollNumber,new { @class = "control-label col-md-2" })
+            @Html.TextBoxFor(model => model.RollNumber, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.RollNumber, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", "Student", new { @class = "btn btn-info" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

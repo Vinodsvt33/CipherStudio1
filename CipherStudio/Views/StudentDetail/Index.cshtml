@@ -1,0 +1,33 @@
+﻿@using CipherStudio.ViewModel
+@model StudentTeacherSubjectViewModel
+
+
+<h1>Subject detail</h1>
+
+<table class="table table-bordered table-striped table-hover">
+    <thead>
+        <tr>
+            <th><span>Subject Name</span></th>
+            <th><span>TeacherID</span></th>
+            
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @foreach (var Subjects in Model.Subjects)
+            {
+            <tr>
+                <td> @Subjects.Name</td>
+                <td> @Subjects.TeacherId</td>
+               
+                
+            </tr>
+
+        }
+            </tr>
+        </tbody>
+
+       
+    </table>
+

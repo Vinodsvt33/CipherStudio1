@@ -1,0 +1,48 @@
+﻿@model IEnumerable<CipherStudio.Models.Subject>
+
+@{
+    ViewBag.Title = "Subjects";
+}
+
+<h2>Subjects</h2>
+
+<p>
+    @Html.ActionLink("Create New Subject", "Create", "SUbject", new { @class = "btn btn-primary" })
+</p>
+
+<table class="table table-bordered table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Class.ClassName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Language)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Class.ClassName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Language)
+                </td>
+                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SubjectId }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SubjectId }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SubjectId })
+                    </td>*@
+            </tr>
+        }
+    </tbody>
+</table>
